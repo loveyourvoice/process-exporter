@@ -15,6 +15,4 @@ services:
       - /host/proc
       - -config.path
       - /config/process-exporter.yml
-    networks:
-      - process-exporter-net
     restart: unless-stopped
