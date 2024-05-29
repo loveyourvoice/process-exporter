@@ -12,11 +12,7 @@ services:
         target: /.process-exporter.yml
     volumes:
       - /proc:/host/proc
-    command:
-      - --procfs
-      - /host/proc
-      - -config.path
-      - /process-exporter.yml
+    command: '--procfs /host/proc -config.path process-exporter.yml'
     restart: unless-stopped
 
 configs:
