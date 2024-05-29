@@ -9,7 +9,10 @@ services:
       - "9256:9256"
     volumes:
       - /proc:/host/proc
-      - /config/process-exporter.yml:/process-exporter.yml
+      - process-exporter-config:/process-exporter.yml
+    configs:
+      - source: "process-exporter-config"
+        target: "/process-exporter.yml"
     command:
       - --procfs
       - /host/proc
