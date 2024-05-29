@@ -7,9 +7,11 @@ services:
     privileged: true
     ports:
       - "9256:9256"
+    configs:
+      - source: process-exporter-config
+        target: /.process-exporter.yml
     volumes:
       - /proc:/host/proc
-      - ./process-exporter.yml:/process-exporter-config
     command:
       - --procfs
       - /host/proc
