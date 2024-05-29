@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   process-exporter:
@@ -9,13 +9,14 @@ services:
       - "9256:9256"
     volumes:
       - /proc:/host/proc
-      - process-exporter-config:/process-exporter.yml
-    configs:
-      - source: "process-exporter-config"
-        target: "/process-exporter.yml"
+      - ./process-exporter.yml:/process-exporter-config
     command:
       - --procfs
       - /host/proc
       - -config.path
       - /process-exporter.yml
     restart: unless-stopped
+
+configs:
+  process-exporter-config:
+    file: ./process-exporter.yml
